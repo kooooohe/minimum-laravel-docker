@@ -1,0 +1,28 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: ./nginx
+    depends_on:
+      - php
+    ports:
+      - 80:80
+    volumes:
+      - ./www:/var/www:cached
+
+  php:
+    build:
+      context: ./phpfpm
+    volumes:
+      - ./www:/var/www:cached
+
+  mysql:
+    restart: always
+    image: mysql:latest
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    ports:
+      - 3306:3306
