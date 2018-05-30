@@ -17,12 +17,13 @@ services:
       - ./www:/var/www:cached
 
   mysql:
-    restart: always
-    image: mysql:latest
+    #restart: always
+    build:
+      context: ./mysql
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./mysql/data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=test
     ports:
       - 3306:3306
