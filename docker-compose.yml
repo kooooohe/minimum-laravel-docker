@@ -18,8 +18,9 @@ services:
 
   mysql:
     #restart: always
-    build:
-      context: ./mysql
+    #build:
+    #  context: ./mysql
+    image: mysql:5.7
     volumes:
       - ./mysql/data:/var/lib/mysql
     environment:
