@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   nginx:
     build:
@@ -8,13 +8,13 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./www:/var/www:cached
+      - ./app:/app:cached
 
   php:
     build:
       context: ./phpfpm
     volumes:
-      - ./www:/var/www:cached
+      - ./app:/app:cached
 
   mysql:
     #restart: always
@@ -28,3 +28,9 @@ services:
       - MYSQL_DATABASE=test
     ports:
       - 3306:3306
+
+  composer:
+    image: composer:latest
+    volumes:
+     - ./app:/app
+    command: [tail, -f, /dev/null]
