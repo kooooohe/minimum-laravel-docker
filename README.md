@@ -1,8 +1,11 @@
 # Laravel-docker-minimum-required
 
+`docker-compose build`
+
 `docker-compose up -d`
 
-go phpfpm container
+go composer container
+`doker-compose exec composer bash`
 
 `composer create-project --prefer-dist laravel/laravel laravel`
 
