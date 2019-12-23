@@ -1,4 +1,4 @@
-# Laravel-docker-minimum-required
+# minimum-laravel-docker
 
 `docker-compose build`
 
